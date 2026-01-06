@@ -1,0 +1,15 @@
+# Environnements virtuels
+pai-rl/
+.venv/
+
+# Python
+__pycache__/
+*.pyc
+
+# Données / outputs
+outputs/
+*.png
+*.csv
+
+# IDE
+.vscode/
