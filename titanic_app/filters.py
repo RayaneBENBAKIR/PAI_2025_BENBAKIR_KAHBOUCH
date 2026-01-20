@@ -1,13 +1,13 @@
 """
-filters.py
-----------
-Fonctions pures de filtrage (faciles à tester).
+Filtering utilities.
 
-Filtres gérés :
-- survived : "All" | "Survived" | "Not Survived"
-- sex      : "All" | "male" | "female" (ou toute valeur présente)
+Filters supported:
+- survived: "All" | "Survived" | "Not Survived"
+- sex: "All" or a value present in df["Sex"]
 - age_range: (min_age, max_age)
-- pclass   : liste d'entiers (ex: [1,2,3])
+- pclass: list of ints
+- embarked: "All" or one of the ports (typically C, Q, S)
+- alone: "All" | "Yes" | "No"
 """
 
 from __future__ import annotations
@@ -20,33 +20,34 @@ def apply_filters(
     sex: str = "All",
     age_range: tuple[float, float] | None = None,
     pclass: list[int] | None = None,
+    embarked: str = "All",
+    alone: str = "All",
 ) -> pd.DataFrame:
-    """
-    Applique les filtres à un DataFrame Titanic et retourne un nouveau DataFrame.
-
-    Remarque :
-    - On ne modifie jamais df en place (bonnes pratiques).
-    """
     out = df.copy()
 
-    # Filtre survie
     if survived != "All" and "Survived" in out.columns:
         if survived == "Survived":
             out = out[out["Survived"] == 1]
         elif survived == "Not Survived":
             out = out[out["Survived"] == 0]
 
-    # Filtre sexe
     if sex != "All" and "Sex" in out.columns:
         out = out[out["Sex"] == sex]
 
-    # Filtre âge
     if age_range is not None and "Age" in out.columns:
         a_min, a_max = age_range
         out = out[(out["Age"] >= a_min) & (out["Age"] <= a_max)]
 
-    # Filtre classe
     if pclass is not None and len(pclass) > 0 and "Pclass" in out.columns:
         out = out[out["Pclass"].isin(pclass)]
+
+    if embarked != "All" and "Embarked" in out.columns:
+        out = out[out["Embarked"] == embarked]
+
+    if alone != "All" and "Alone" in out.columns:
+        if alone == "Yes":
+            out = out[out["Alone"] == True]
+        elif alone == "No":
+            out = out[out["Alone"] == False]
 
     return out
