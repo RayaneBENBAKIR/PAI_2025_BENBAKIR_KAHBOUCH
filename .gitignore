@@ -13,3 +13,7 @@ outputs/
 
 # IDE
 .vscode/
+
+# Sphinx build
+docs/build/
+docs/_build/

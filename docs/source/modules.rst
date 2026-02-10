@@ -1,7 +1,14 @@
-titanic_app
-===========
+Modules
+=======
 
-.. toctree::
-   :maxdepth: 4
+.. automodule:: titanic_app.data_loader
+   :members:
 
-   titanic_app
+.. automodule:: titanic_app.filters
+   :members:
+
+.. automodule:: titanic_app.model
+   :members:
+
+.. automodule:: titanic_app.plots
+   :members:
