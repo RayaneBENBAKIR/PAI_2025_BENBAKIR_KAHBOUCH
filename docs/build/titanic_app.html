@@ -1,0 +1,358 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>titanic_app package &mdash; Titanic Survival Analysis 1.4 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=0ed52906"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Titanic Survival Analysis
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">titanic_app package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-titanic_app.app">titanic_app.app module</a><ul>
+<li><a class="reference internal" href="#titanic_app.app.get_data"><code class="docutils literal notranslate"><span class="pre">get_data()</span></code></a></li>
+<li><a class="reference internal" href="#titanic_app.app.get_model"><code class="docutils literal notranslate"><span class="pre">get_model()</span></code></a></li>
+<li><a class="reference internal" href="#titanic_app.app.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+<li><a class="reference internal" href="#titanic_app.app.render_explore_tab"><code class="docutils literal notranslate"><span class="pre">render_explore_tab()</span></code></a></li>
+<li><a class="reference internal" href="#titanic_app.app.render_prediction_tab"><code class="docutils literal notranslate"><span class="pre">render_prediction_tab()</span></code></a></li>
+<li><a class="reference internal" href="#titanic_app.app.sidebar_filters"><code class="docutils literal notranslate"><span class="pre">sidebar_filters()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-titanic_app.data_loader">titanic_app.data_loader module</a><ul>
+<li><a class="reference internal" href="#titanic_app.data_loader.DataPaths"><code class="docutils literal notranslate"><span class="pre">DataPaths</span></code></a><ul>
+<li><a class="reference internal" href="#titanic_app.data_loader.DataPaths.data_csv"><code class="docutils literal notranslate"><span class="pre">DataPaths.data_csv</span></code></a></li>
+<li><a class="reference internal" href="#titanic_app.data_loader.DataPaths.root"><code class="docutils literal notranslate"><span class="pre">DataPaths.root</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#titanic_app.data_loader.load_titanic"><code class="docutils literal notranslate"><span class="pre">load_titanic()</span></code></a></li>
+<li><a class="reference internal" href="#titanic_app.data_loader.prepare_titanic"><code class="docutils literal notranslate"><span class="pre">prepare_titanic()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-titanic_app.export">titanic_app.export module</a><ul>
+<li><a class="reference internal" href="#export-py">export.py</a></li>
+<li><a class="reference internal" href="#titanic_app.export.df_to_csv_bytes"><code class="docutils literal notranslate"><span class="pre">df_to_csv_bytes()</span></code></a></li>
+<li><a class="reference internal" href="#titanic_app.export.fig_to_png_bytes"><code class="docutils literal notranslate"><span class="pre">fig_to_png_bytes()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-titanic_app.filters">titanic_app.filters module</a><ul>
+<li><a class="reference internal" href="#titanic_app.filters.apply_filters"><code class="docutils literal notranslate"><span class="pre">apply_filters()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-titanic_app.model">titanic_app.model module</a><ul>
+<li><a class="reference internal" href="#model-py">model.py</a></li>
+<li><a class="reference internal" href="#titanic_app.model.predict_survival"><code class="docutils literal notranslate"><span class="pre">predict_survival()</span></code></a></li>
+<li><a class="reference internal" href="#titanic_app.model.train_model"><code class="docutils literal notranslate"><span class="pre">train_model()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-titanic_app.plots">titanic_app.plots module</a><ul>
+<li><a class="reference internal" href="#titanic_app.plots.fig_age_hist_survivors"><code class="docutils literal notranslate"><span class="pre">fig_age_hist_survivors()</span></code></a></li>
+<li><a class="reference internal" href="#titanic_app.plots.fig_heatmap_survival_sex_class"><code class="docutils literal notranslate"><span class="pre">fig_heatmap_survival_sex_class()</span></code></a></li>
+<li><a class="reference internal" href="#titanic_app.plots.fig_survival_rate_by_class"><code class="docutils literal notranslate"><span class="pre">fig_survival_rate_by_class()</span></code></a></li>
+<li><a class="reference internal" href="#titanic_app.plots.fig_survivors_pie_by_sex"><code class="docutils literal notranslate"><span class="pre">fig_survivors_pie_by_sex()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-titanic_app.stats">titanic_app.stats module</a><ul>
+<li><a class="reference internal" href="#stats-py">stats.py</a></li>
+<li><a class="reference internal" href="#titanic_app.stats.basic_overview"><code class="docutils literal notranslate"><span class="pre">basic_overview()</span></code></a></li>
+<li><a class="reference internal" href="#titanic_app.stats.numeric_describe"><code class="docutils literal notranslate"><span class="pre">numeric_describe()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-titanic_app">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Titanic Survival Analysis</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">titanic_app package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/titanic_app.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="titanic-app-package">
+<h1>titanic_app package<a class="headerlink" href="#titanic-app-package" title="Link to this heading"></a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading"></a></h2>
+</section>
+<section id="module-titanic_app.app">
+<span id="titanic-app-app-module"></span><h2>titanic_app.app module<a class="headerlink" href="#module-titanic_app.app" title="Link to this heading"></a></h2>
+<p>Streamlit application: Titanic dataset explorer and survival prediction.</p>
+<dl class="simple">
+<dt>Run (from project root):</dt><dd><p>python -m streamlit run titanic_app/app.py</p>
+</dd>
+</dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="titanic_app.app.get_data">
+<span class="sig-prename descclassname"><span class="pre">titanic_app.app.</span></span><span class="sig-name descname"><span class="pre">get_data</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#titanic_app.app.get_data" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="titanic_app.app.get_model">
+<span class="sig-prename descclassname"><span class="pre">titanic_app.app.</span></span><span class="sig-name descname"><span class="pre">get_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df_for_training</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#titanic_app.app.get_model" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="titanic_app.app.main">
+<span class="sig-prename descclassname"><span class="pre">titanic_app.app.</span></span><span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#titanic_app.app.main" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="titanic_app.app.render_explore_tab">
+<span class="sig-prename descclassname"><span class="pre">titanic_app.app.</span></span><span class="sig-name descname"><span class="pre">render_explore_tab</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df_filtered</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#titanic_app.app.render_explore_tab" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="titanic_app.app.render_prediction_tab">
+<span class="sig-prename descclassname"><span class="pre">titanic_app.app.</span></span><span class="sig-name descname"><span class="pre">render_prediction_tab</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#titanic_app.app.render_prediction_tab" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="titanic_app.app.sidebar_filters">
+<span class="sig-prename descclassname"><span class="pre">titanic_app.app.</span></span><span class="sig-name descname"><span class="pre">sidebar_filters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#titanic_app.app.sidebar_filters" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="module-titanic_app.data_loader">
+<span id="titanic-app-data-loader-module"></span><h2>titanic_app.data_loader module<a class="headerlink" href="#module-titanic_app.data_loader" title="Link to this heading"></a></h2>
+<p>Data loading and basic preparation for the Titanic dataset.</p>
+<dl class="simple">
+<dt>Expected data location:</dt><dd><p>&lt;project_root&gt;/data/Titanic-Dataset.csv</p>
+</dd>
+</dl>
+<p>Preparation:
+- Fill missing Age with the median
+- Create a boolean column Alone = (SibSp + Parch == 0)
+- Drop columns that are not useful for analysis (PassengerId, Ticket, Cabin)
+- Keep Embarked (used as a filter)</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="titanic_app.data_loader.DataPaths">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">titanic_app.data_loader.</span></span><span class="sig-name descname"><span class="pre">DataPaths</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">root</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="s"><span class="pre">'Path'</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#titanic_app.data_loader.DataPaths" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py property">
+<dt class="sig sig-object py" id="titanic_app.data_loader.DataPaths.data_csv">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">data_csv</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Path</span></span><a class="headerlink" href="#titanic_app.data_loader.DataPaths.data_csv" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="titanic_app.data_loader.DataPaths.root">
+<span class="sig-name descname"><span class="pre">root</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Path</span></span><a class="headerlink" href="#titanic_app.data_loader.DataPaths.root" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="titanic_app.data_loader.load_titanic">
+<span class="sig-prename descclassname"><span class="pre">titanic_app.data_loader.</span></span><span class="sig-name descname"><span class="pre">load_titanic</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">csv_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="headerlink" href="#titanic_app.data_loader.load_titanic" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="titanic_app.data_loader.prepare_titanic">
+<span class="sig-prename descclassname"><span class="pre">titanic_app.data_loader.</span></span><span class="sig-name descname"><span class="pre">prepare_titanic</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="headerlink" href="#titanic_app.data_loader.prepare_titanic" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="module-titanic_app.export">
+<span id="titanic-app-export-module"></span><h2>titanic_app.export module<a class="headerlink" href="#module-titanic_app.export" title="Link to this heading"></a></h2>
+<section id="export-py">
+<h3>export.py<a class="headerlink" href="#export-py" title="Link to this heading"></a></h3>
+<p>Fonctions utilitaires pour exporter :
+- un DataFrame en CSV (bytes) pour download Streamlit
+- une figure matplotlib en PNG (bytes) pour download Streamlit</p>
+</section>
+<dl class="py function">
+<dt class="sig sig-object py" id="titanic_app.export.df_to_csv_bytes">
+<span class="sig-prename descclassname"><span class="pre">titanic_app.export.</span></span><span class="sig-name descname"><span class="pre">df_to_csv_bytes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bytes</span></span></span><a class="headerlink" href="#titanic_app.export.df_to_csv_bytes" title="Link to this definition"></a></dt>
+<dd><p>Convertit un DataFrame en CSV encodé en UTF-8 (bytes),
+utilisable directement dans st.download_button.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="titanic_app.export.fig_to_png_bytes">
+<span class="sig-prename descclassname"><span class="pre">titanic_app.export.</span></span><span class="sig-name descname"><span class="pre">fig_to_png_bytes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fig</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bytes</span></span></span><a class="headerlink" href="#titanic_app.export.fig_to_png_bytes" title="Link to this definition"></a></dt>
+<dd><p>Convertit une figure matplotlib en PNG (bytes),
+utilisable directement dans st.download_button.</p>
+</dd></dl>
+
+</section>
+<section id="module-titanic_app.filters">
+<span id="titanic-app-filters-module"></span><h2>titanic_app.filters module<a class="headerlink" href="#module-titanic_app.filters" title="Link to this heading"></a></h2>
+<p>Filtering utilities.</p>
+<p>Filters supported:
+- survived: “All” | “Survived” | “Not Survived”
+- sex: “All” or a value present in df[“Sex”]
+- age_range: (min_age, max_age)
+- pclass: list of ints
+- embarked: “All” or one of the ports (typically C, Q, S)
+- alone: “All” | “Yes” | “No”</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="titanic_app.filters.apply_filters">
+<span class="sig-prename descclassname"><span class="pre">titanic_app.filters.</span></span><span class="sig-name descname"><span class="pre">apply_filters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">survived</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'All'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sex</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'All'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">age_range</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pclass</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">embarked</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'All'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alone</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'All'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="headerlink" href="#titanic_app.filters.apply_filters" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="module-titanic_app.model">
+<span id="titanic-app-model-module"></span><h2>titanic_app.model module<a class="headerlink" href="#module-titanic_app.model" title="Link to this heading"></a></h2>
+<section id="model-py">
+<h3>model.py<a class="headerlink" href="#model-py" title="Link to this heading"></a></h3>
+<p>Simple survival prediction model for the Titanic dataset.</p>
+<p>Model:
+- Logistic Regression (scikit-learn)</p>
+<p>Features:
+- Pclass
+- Sex
+- Age
+- Fare
+- SibSp
+- Parch</p>
+</section>
+<dl class="py function">
+<dt class="sig sig-object py" id="titanic_app.model.predict_survival">
+<span class="sig-prename descclassname"><span class="pre">titanic_app.model.</span></span><span class="sig-name descname"><span class="pre">predict_survival</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Pipeline</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">features</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#titanic_app.model.predict_survival" title="Link to this definition"></a></dt>
+<dd><p>Predict survival (0/1) and survival probability.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="titanic_app.model.train_model">
+<span class="sig-prename descclassname"><span class="pre">titanic_app.model.</span></span><span class="sig-name descname"><span class="pre">train_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Pipeline</span></span></span><a class="headerlink" href="#titanic_app.model.train_model" title="Link to this definition"></a></dt>
+<dd><p>Train a logistic regression model and return a fitted sklearn Pipeline.</p>
+</dd></dl>
+
+</section>
+<section id="module-titanic_app.plots">
+<span id="titanic-app-plots-module"></span><h2>titanic_app.plots module<a class="headerlink" href="#module-titanic_app.plots" title="Link to this heading"></a></h2>
+<p>plots.py</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="titanic_app.plots.fig_age_hist_survivors">
+<span class="sig-prename descclassname"><span class="pre">titanic_app.plots.</span></span><span class="sig-name descname"><span class="pre">fig_age_hist_survivors</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#titanic_app.plots.fig_age_hist_survivors" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="titanic_app.plots.fig_heatmap_survival_sex_class">
+<span class="sig-prename descclassname"><span class="pre">titanic_app.plots.</span></span><span class="sig-name descname"><span class="pre">fig_heatmap_survival_sex_class</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#titanic_app.plots.fig_heatmap_survival_sex_class" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="titanic_app.plots.fig_survival_rate_by_class">
+<span class="sig-prename descclassname"><span class="pre">titanic_app.plots.</span></span><span class="sig-name descname"><span class="pre">fig_survival_rate_by_class</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#titanic_app.plots.fig_survival_rate_by_class" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="titanic_app.plots.fig_survivors_pie_by_sex">
+<span class="sig-prename descclassname"><span class="pre">titanic_app.plots.</span></span><span class="sig-name descname"><span class="pre">fig_survivors_pie_by_sex</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#titanic_app.plots.fig_survivors_pie_by_sex" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="module-titanic_app.stats">
+<span id="titanic-app-stats-module"></span><h2>titanic_app.stats module<a class="headerlink" href="#module-titanic_app.stats" title="Link to this heading"></a></h2>
+<section id="stats-py">
+<h3>stats.py<a class="headerlink" href="#stats-py" title="Link to this heading"></a></h3>
+<p>Statistiques descriptives pour l’exploration du dataset Titanic.</p>
+<p>Fonctions exposées :
+- basic_overview(df) : infos clés (taille, valeurs manquantes, taux de survie)
+- numeric_describe(df) : describe() des colonnes numériques, transposé</p>
+</section>
+<dl class="py function">
+<dt class="sig sig-object py" id="titanic_app.stats.basic_overview">
+<span class="sig-prename descclassname"><span class="pre">titanic_app.stats.</span></span><span class="sig-name descname"><span class="pre">basic_overview</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="headerlink" href="#titanic_app.stats.basic_overview" title="Link to this definition"></a></dt>
+<dd><p>Renvoie un dictionnaire de statistiques simples à afficher dans l’UI.</p>
+<ul class="simple">
+<li><p>rows / cols</p></li>
+<li><p>missing_total</p></li>
+<li><p>survival_rate (si la colonne Survived existe)</p></li>
+</ul>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="titanic_app.stats.numeric_describe">
+<span class="sig-prename descclassname"><span class="pre">titanic_app.stats.</span></span><span class="sig-name descname"><span class="pre">numeric_describe</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="headerlink" href="#titanic_app.stats.numeric_describe" title="Link to this definition"></a></dt>
+<dd><p>Décrit uniquement les colonnes numériques (plus lisible),
+et renvoie le tableau transposé (lignes = variables).</p>
+</dd></dl>
+
+</section>
+<section id="module-titanic_app">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-titanic_app" title="Link to this heading"></a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, Rayane Benbakir, Oussama Khabouch.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
