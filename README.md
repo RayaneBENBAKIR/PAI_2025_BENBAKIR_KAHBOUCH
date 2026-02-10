@@ -1,3 +1,5 @@
+![CI](https://github.com/RayaneBENBAKIR/PAI_2025_BENBAKIR_KAHBOUCH/actions/workflows/ci.yml/badge.svg)
+
 # Titanic Survival Analysis and Prediction
 
 This project explores the Titanic dataset through interactive data analysis and
@@ -43,23 +45,10 @@ passengers such as age, sex, socio-economic class, family relations, and surviva
   - Fare
   - SibSp (siblings/spouses aboard)
   - Parch (parents/children aboard)
-- Output:
+  - Output:
   - Survival probability
   - Binary prediction (survived / not survived)
 
 ---
 
 ## Project structure
-
-├── titanic_app/
-│ ├── app.py
-│ ├── data_loader.py
-│ ├── filters.py
-│ ├── plots.py
-│ ├── model.py
-│ └── export.py
-├── data/
-│ └── Titanic-Dataset.csv
-├── tests/
-├── requirements.txt
-└── README.md
